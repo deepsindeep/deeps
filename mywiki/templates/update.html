@@ -1,0 +1,19 @@
+<html>
+<body>
+<h2></h2>
+<p>Edit post</p>
+<form action="{% url 'mywiki:update_view' %}" method="post">
+{% csrf_token %}
+{% for d in data%}
+<input type='hidden' name='userid' value={{d.userId_id}}>
+<input type='hidden' name='contentid' value={{d.id}}>
+<p><b>Title</b></p>
+<Input type=text name='content_title' value="{{d.contentTitle}}"></br>
+<textarea type='text' name='datacontent' value="{{d.content_text}}" >{{d.content_text}}</textarea>
+<Button type='submit'>Update</Button>
+{% endfor %}
+</form>
+<br>
+
+</body>
+</html>

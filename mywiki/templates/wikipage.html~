@@ -1,0 +1,24 @@
+<html>
+<body>
+<h1>Welcome to MyWiki</h1>
+<h2></h2>
+<p>New post</p>
+<form action="{% url 'mywiki:wikiview' %}" method="post">
+{% csrf_token %}
+<input type='hidden' name='userid' value={{data}}>
+<p><b>Title</b></p>
+<Input type=text name='content_title' value={{title}}></input></br>
+<textarea type='text' name='datacontent' placeholder="Enter your content" value={{content_text}} ></textarea>
+<Button type='submit'>Post</Button>
+</form>
+<br>
+{% for postdata in contentdata %}
+<p><b>{{postdata.contentTitle}}</b></p>
+<p>{{ postdata.content_text }}</p>
+<p>{{postdata.date_added}}</p>
+<a  href ="{% url 'mywiki:edit' id=postdata.id userid=postdata.userId_id %}" name='Edit' value='Edit'>Edit</a>
+<a  href ="{% url 'mywiki:del' id=postdata.id userid=postdata.userId_id %}" >Delete</a>
+<hr>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,12 @@
+<html>
+<body>
+<h1>Welcome to MyWiki</h1></br>
+<form action="{% url 'mywiki:login' %}" method="post">
+{% csrf_token %}
+<p>Email</p><input type='text' name='Email'></br>
+<p>Password</p><input type='password' name='Password'></br>
+<br>
+<button type="submit">Submit</button>
+</form>
+</body>
+</html>

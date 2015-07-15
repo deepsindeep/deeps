@@ -1,0 +1,22 @@
+<html>
+<body>
+<h1>Welcome to MyWiki</h1>
+<a style="position:right" href="{% url 'mywiki:login' %}">Login</a>
+<a href="{% url 'mywiki:signup' %}">Sign Up</a>
+</br>
+</br>
+<form action="{% url 'mywiki:homepage' %}" method="POST">
+{% csrf_token  %}
+<input type='text' name = 'search' placeholder='Search Your content here'/>
+</br>
+</br>
+<input type='submit' value='Search'/>
+</form>
+<hr>
+ {% for postdata in searchdata %}
+<p><b>{{searchdata.contentTitle}}</b></p>
+<p>{{ postdata.content_text }}</p>
+<p>{{postdata.date_added}}</p>
+{% endfor %}
+</body>
+</html>
